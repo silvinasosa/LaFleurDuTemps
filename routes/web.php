@@ -21,6 +21,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
 });
 
+Route::post('products/{id}/images', 'ProductsController@images');
 
 Auth::routes();
 

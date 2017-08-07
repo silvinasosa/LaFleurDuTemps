@@ -8,7 +8,8 @@ class Image extends Model
 {
   protected $fillable = [ 'name', 'src'];
 
-  public function product(){
+  public function product()
+  {
     return $this->belongsTo('App\Product');
   }
 }

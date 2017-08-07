@@ -10,6 +10,16 @@
                 <div class="panel-body">
                     You are logged in!
                 </div>
+
+                <div class="panel-body">
+                  <a href="/admin/products">Ver Productos Cargados</a>
+                </div>
+
+
+                <div class="panel-body">
+                  <a href="/admin/products/create">Cargar un Producto!</a>
+                </div>
+
             </div>
         </div>
     </div>

@@ -8,8 +8,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Cargar un Producto</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="\admin\products">
+                    <form class="form-horizontal" method="POST" action="/admin/products">
                         {{ csrf_field() }}
+                        {{ method_field('post') }}
 
 
                         <div class="form-group">
@@ -25,7 +26,7 @@
                           <div class="col-md-6">
                           <select name="category_id" class="form-control">
                             @foreach($categories as $category)
-                            <option value="{{ $category->id}}">{{ $category->value}}</option>
+                            <option value="{{ $category->id}}">{{ $category->name}}</option>
                             @endforeach
                           </select>
                         </div>
@@ -34,7 +35,7 @@
                         <div class="form-group">
                           <label for="description" class="col-md-4 control-label">Descripción</label>
                           <div class="col-md-6">
-                          <textarea id="description" row="10" class="form-control" value= "{{ old('description')}}" required autofocus></textarea>
+                          <textarea id="description" row="10" class="form-control" required autofocus>{{ old('description') }}</textarea>
                         </div>
                         </div>
 
@@ -46,9 +47,9 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="price" class="col-md-4 control-label">¿Imágen?</label>
+                          <label for="image" class="col-md-4 control-label">Imágen</label>
                           <div class="col-md-6">
-                          <input type="text" name="price" value="{{ old('price')}}" class="form-control"></input>
+                          <input type="file" name="image" value="{{ old('image')}}" class="form-control"></input>
                           </div>
                         </div>
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Category;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-      $categories = collect(['Corpiños', 'Bombachas', 'Culottes', 'Conjuntos', 'Bodysuits']);
+      $categories = collect(['Soutiens', 'Culottes', 'Conjuntos', 'Bodysuits']);
 
         $categories->each(function ($value) {
          factory(Category::class)->create([

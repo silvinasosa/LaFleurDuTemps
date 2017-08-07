@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\Product;
 use App\Category;
+use App\Image;
 
 class ProductsController extends Controller
 {
@@ -62,8 +64,8 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-      $categories = Category::all();
-      return view('admin.products.edit', compact('product', 'categories'));
+      $categories = \App\Category::all();
+      return view('admin.products.edit', compact('categories', 'product'));
     }
 
     /**
@@ -85,8 +87,25 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        Product::destroy($id);
+        return redirect('admin/products');
+
     }
+
+    public function images(Request $request, $id)
+    {
+
+        $product = Product::find($id);
+        $file = $request->file('file');
+        $ext = $file->extension();
+        $name = uniqid();
+        $file->storeAs('img/products-'.$product->id, $name.'.'.$ext);
+
+
+        $image = new \App\Image(['src' => 'img/products-  '.$product->id.'/'.$name.'.'.$ext]);
+        $product->images()->save($image);
+      }
+
 }

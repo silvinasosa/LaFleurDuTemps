@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Category;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,11 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      \DB::table('categories')->insert([
-        ['name' => 'Soutiens'],
-        ['name' => 'Culottes'],
-        ['name' => 'Conjuntos'],
-        ['name' => 'Bodysuits']
-      ]);
+      $this->call(UsersTableSeeder::class);
+      $this->call(CategoriesTableSeeder::class);
+      $this->call(ProductsTableSeeder::class);
     }
 }

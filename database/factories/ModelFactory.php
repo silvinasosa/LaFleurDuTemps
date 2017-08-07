@@ -25,19 +25,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Product::class, function (Faker\Generator $faker){
-
     return [
-      'title' => $faker->word,
-      'slug'  => str_slug($title),
+      'name' => $faker->name,
       'description' => implode(' ', $faker->paragraphs(5)),
+      'slug'  => str_slug($name),
       'price' => rand(100, 1000),
-      'image' => 'https://dummyimage.com/300'
     ];
 });
 
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'slug' => str_slug($name)
+        'name' => $name = $faker->name,
+        'slug' => str_slug($name),
       ];
 });
