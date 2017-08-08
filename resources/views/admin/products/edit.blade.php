@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
-{{-- @if (Auth::check()) --}}
+{{-- @if (Auth::check())
+@else
+   return redirect::to('/');
+@endif --}}
 
 @section('content')
 <div class="container">
@@ -17,10 +20,16 @@
                         <div class="form-group">
                           <label for="name" class="col-md-4 control-label">Nombre del Producto</label>
                           <div class="col-md-6">
-                              <input id="name" type="text" class="form-control" name="name" value="{{ $product->name }}" required autofocus>
+                              <input id="name" type="text" class="form-control" name="name" value="{{ $product->name }}" required autofocus></input>
                           </div>
                         </div>
 
+                        <div class="form-group">
+                          <label for="slug" class="col-md-4 control-label">Slug</label>
+                          <div class="col-md-6">
+                          <input type="text" name="slug" value="{{ $product->slug }}" class="form-control"></input>
+                          </div>
+                        </div>
 
                         <div class="form-group">
                           <label for="category_id" class="col-md-4 control-label">Categoría</label>
@@ -37,7 +46,7 @@
                         <div class="form-group">
                           <label for="description" class="col-md-4 control-label">Descripción</label>
                           <div class="col-md-6">
-                          <textarea id="description" row="10" class="form-control" required autofocus>{{ $product->description }}</textarea>
+                          <textarea id="description" row="10" class="form-control" name="description">{{ $product->description }}</textarea>
                         </div>
                         </div>
 
@@ -55,7 +64,6 @@
                           </div>
                         </div>
 
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -63,50 +71,15 @@
                                 </button>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <a href="/admin/products"></a>
-                                    Volver
-                                </button>
+                              <a href="/admin/products">Volver al Panel de Productos</a>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-{{-- @elseif ($condition)
-
-
-
-
-
-@endif
- --}}
-
 @endsection
-
-
-
-
-{{--QUE ONDA ESTO?
-
-    <div class="form-group">
-      <label for="slug">Slug</label>
-      <input type="text" name="slug" value="{{ old('slug')}}" class="form-control"></input>
-    </div>
-
-
-
-<form class="" action="{{ route('create') }}" method="post">
-
-
-</form>
-
-
- --}}

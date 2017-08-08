@@ -11,10 +11,11 @@
               <tr>
                 <td>Id</td>
                 <td>Nombre</td>
+                <td>Slug</td>
                 <td>Descripción</td>
                 <td>Precio</td>
                 <td>Categoría</td>
-                <td class="text-right">Acciones</td>
+                <td class="text-center">Acciones</td>
               </tr>
             </thead>
           <tbody>
@@ -23,12 +24,13 @@
               <tr>
                 <td>{{ $product->id }}</td>
                 <td>{{ $product->name }}</td>
+                <td>{{ $product->slug }}</td>
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->category->name }}</td>
-                <td class="text-right">
+                <td class="text-center">
                   <a href="/admin/products/{{ $product->id }}/edit" class="btn btn-primary">Editar<i class="fa fa-pencil"></i></a>
-                  <form method="POST" action="/admin/products/{{ $product->id }}/edit" style="display: inline-block;">
+                  <form method="POST" action="/admin/products/{{ $product->id }}" style="display: inline-block;">
                     {{ csrf_field() }}
                     {{ method_field('delete') }}
                     <button type="submit" value="submit" class="btn btn-danger">Eliminar<i class="fa fa-trash"></i></button>
@@ -44,4 +46,9 @@
           </tbody>
         </table>
 
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+              <a href="/home">Volver a mi Perfil</a>
+            </div>
+        </div>
 @endsection

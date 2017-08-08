@@ -25,4 +25,6 @@ Route::post('products/{id}/images', 'ProductsController@images');
 
 Auth::routes();
 
+// Route::get('faq', '....Controller@faq');
+
 Route::get('/home', 'HomeController@index')->name('home');

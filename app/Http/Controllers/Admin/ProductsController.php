@@ -11,6 +11,12 @@ use App\Image;
 
 class ProductsController extends Controller
 {
+
+    public function _construct()
+    {
+      $this->middleware('auth', ['except' => 'show']);
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,6 +49,7 @@ class ProductsController extends Controller
     {
        $product = \Auth::user()->products()->create($request->all());
        return redirect('admin/products');
+       
     }
 
     /**
@@ -53,7 +60,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin.products.show', compact('product', 'categories'));
     }
 
     /**
@@ -87,7 +95,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         Product::destroy($id);
         return redirect('admin/products');
@@ -101,10 +109,10 @@ class ProductsController extends Controller
         $file = $request->file('file');
         $ext = $file->extension();
         $name = uniqid();
-        $file->storeAs('img/products-'.$product->id, $name.'.'.$ext);
+        $file->storeAs('img/products'.$product->id, $name.'.'.$ext);
 
 
-        $image = new \App\Image(['src' => 'img/products-  '.$product->id.'/'.$name.'.'.$ext]);
+        $image = new \App\Image(['src' => 'img/products'.$product->id.'/'.$name.'.'.$ext]);
         $product->images()->save($image);
       }
 
