@@ -1,39 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\User;
+use App\Image;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
       $product = \Auth::user()->products()->create($request->all());
@@ -46,9 +21,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user, Image $images)
     {
-      return view('users.show', compact('product'));
+      // $user = \App\User::find($id);
+      return view('profile', compact('product'));
     }
 
     /**
@@ -60,7 +36,7 @@ class UsersController extends Controller
     public function edit(User $user)
     {
       $categories = \App\Category::all();
-      return view('users.form-edit', compact('categories', 'user'));
+      return view('edituser', compact('categories','user'));
     }
 
     /**
@@ -84,6 +60,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+      User::destroy($id);
+      return redirect('/');
     }
 }

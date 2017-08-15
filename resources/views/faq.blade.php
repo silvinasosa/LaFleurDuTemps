@@ -4,10 +4,12 @@
   Preguntas Frecuentes
 @endsection
 
-@section('contenido')
+@section('content')
   <div class="row">
       <div class="col-lg-6 col-lg-offset-3">
-          <h1 class="page-header">Preguntas Frecuentes.</h1>
+          <h1 class="page-header">Preguntas Frecuentes
+          <small></small>
+          </h1>
       </div>
   </div>
 
@@ -97,7 +99,7 @@
                   </div>
                   <div id="collapseFive" class="panel-collapse collapse">
                       <div class="panel-body">
-                        <img src="/img/talles.jpg" alt="">
+                        <img src="/img/talles.jpg" style="height:600px; margin: 0 auto;"alt="">
                       </div>
                   </div>
               </div>
@@ -119,12 +121,19 @@
       </div>
   </div>
 
+  <hr>
+
   <footer>
       <div class="row">
           <div class="col-lg-12">
-              <p></p>
+                <p>Copyright &copy; La Fleur du Temps</p>
           </div>
       </div>
   </footer>
+</div>
+
+  </body>
+
+  </html>
 
 @endsection

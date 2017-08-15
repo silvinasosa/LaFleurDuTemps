@@ -20,4 +20,13 @@ class Product extends Model
       return $this->hasMany('App\Image');
     }
 
+  public function scopeVisibles($query)
+  {
+  $query->where('visible', 1);
+  }
+
+  public function scopeLatest($query){
+    return $query->orderBy("id", "desc");
+  }
+
 }
